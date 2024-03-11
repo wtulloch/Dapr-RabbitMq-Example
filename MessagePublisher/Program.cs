@@ -23,17 +23,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCloudEvents();
+app.MapSubscribeHandler();
+
 app.MapPost("/", async (DaprClient daprClient, SimpleMessage message, CancellationToken cancellationToken) =>
 {
-    var newMessage = message with
-    {
-        Name = message.Name.ToUpper()
-    };
 
-    await daprClient.PublishEventAsync<SimpleMessage>("pubsub", "messages", newMessage,
+    await daprClient.PublishEventAsync("pubsub", "messages", message,
         cancellationToken: cancellationToken);
 
     Console.WriteLine("message published");
+    return Results.Ok();
 });
 
 app.Run();

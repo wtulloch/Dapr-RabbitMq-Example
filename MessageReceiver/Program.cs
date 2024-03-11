@@ -1,3 +1,4 @@
+using Dapr;
 using SampleMessages;
 using Dapr.Client;
 
@@ -25,7 +26,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCloudEvents();
-app.UseRouting();
 app.MapSubscribeHandler();
 
 
@@ -33,8 +33,7 @@ app.MapPost("/", (SimpleMessage message) =>
 {
     Console.WriteLine($"{message.Name}: {message.Message}");
     return Results.Ok();
-})
-    .WithTopic("pubsub","messages");
+});
 
 app.Run();
 
