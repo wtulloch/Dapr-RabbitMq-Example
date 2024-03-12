@@ -8,7 +8,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 //Uncomment the following to try with rabbitmq from Aspire
 
 //builder.AddRabbitMQContainer("messaging", password: "ThisIsAPassword")
-//    .WithEndpoint(containerPort: 5672, hostPort: 5672, scheme: "http");
+//    .WithEndpoint(hostPort: 5672, scheme: "http");
 
 
 builder.AddDapr();
