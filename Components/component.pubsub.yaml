@@ -11,7 +11,7 @@ spec:
     - name: hostname
       value: localhost
     - name: username
-      value: guest
+      value: user
     - name: password
       value: ThisIsAPassword
     - name: durable
