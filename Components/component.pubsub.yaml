@@ -21,7 +21,7 @@ spec:
     - name: autoAck
       value: false
     - name: reconnectWait
-      value: 0
+      value: 10
     - name: concurrency
       value: parallel
     - name: exchangeKind
