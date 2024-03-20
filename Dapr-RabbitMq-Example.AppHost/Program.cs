@@ -1,6 +1,4 @@
 using System.Collections.Immutable;
-using System.Net.Sockets;
-using Aspire.Hosting;
 using Aspire.Hosting.Dapr;
 
 var builder = DistributedApplication.CreateBuilder(args);
@@ -11,8 +9,6 @@ builder.AddContainer("test-rabbit", "rabbitmq", "3-management")
     .WithEnvironment("RABBITMQ_DEFAULT_USER", "user")
     .WithEndpoint(scheme: "tcp", hostPort: 5672, containerPort: 5672,  isProxied: false)
     .WithEndpoint(scheme: "http", hostPort: 15672, containerPort:15672, isProxied: false);
-
-
 
 builder.AddDapr();
 
